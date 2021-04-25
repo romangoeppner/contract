@@ -6,10 +6,12 @@
  * 
  *                                   
 
-   COntract features:
+   Contract features:
    5% fee auto added to the liquidity pool and locked forever
    4% fee auto distributed to all holders
    1% fee sent to charity wallet
+   0.25% token supply limit per transaction
+   0.5% token supply limit per wallet
    30% Supply is burned at start.
    
  */
