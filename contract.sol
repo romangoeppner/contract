@@ -767,7 +767,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 	
 	uint256 public _devFee = 1; // 1% to charity wallet
 	uint256 private _previousDevFee = _devFee;
-	address public charityWallet = address(0x38A25D7F44315E6CA7D1ef4fDE845E3860bCf32D); // will be adjusted later
+	address public charityWallet = address(0x7c87DdAc05c5146876cc0f9e335ce125B15d6893); // Donated to the Center for Great Apes
 	
 	uint256 public _liquidityFee = 5;
 	uint256 private _previousLiquidityFee = _liquidityFee;
