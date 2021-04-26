@@ -740,7 +740,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
 }
 
 
-contract Bonfire is Context, IERC20, Ownable {
+contract ApeHaven is Context, IERC20, Ownable {
 	using SafeMath for uint256;
 	using Address for address;
 	
@@ -758,8 +758,8 @@ contract Bonfire is Context, IERC20, Ownable {
 	uint256 private _rTotal = (MAX - (MAX % _tTotal));
 	uint256 private _tFeeTotal;
 	
-	string private _name = "finalTest";
-	string private _symbol = "FT";
+	string private _name = "ApeHaven";
+	string private _symbol = "APES";
 	uint8 private _decimals = 18;
 	
 	uint256 public _taxFee = 4;
