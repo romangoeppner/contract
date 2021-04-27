@@ -779,7 +779,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 	bool public swapAndLiquifyEnabled = true;
 	
 	uint256 public _maxTxAmount = 1000000000 * 10**18;
-	uint256 public numTokensSellToAddToLiquidity = 200 000 * 10**18;
+	uint256 public numTokensSellToAddToLiquidity = 200000 * 10**18;
 	uint256 public _maxWalletToken = 1000000000 * 10**18; // 0.25% of total supply after burn
 	
 	uint256 deployedAtBlock;
