@@ -1,5 +1,5 @@
 /**
- *Submitted for verification at BscScan.com on 2021-04-28
+ *Submitted for verification at EtherScan.com on 2021-04-28
 */
 
 /**
