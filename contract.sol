@@ -1,19 +1,18 @@
 /**
- *Submitted for verification at BscScan.com on 2021-04-26
+ *Submitted for verification at BscScan.com on 2021-04-28
 */
 
 /**
- * 
- *                                   
+ *
+ *
+
+   "$APES to the moon" -Elon Musk
 
    Contract features:
-   5% fee auto added to the liquidity pool and locked forever
-   4% fee auto distributed to all holders
+   7% fee auto added to the liquidity pool and locked forever
+   2% fee auto distributed to all holders
    1% fee sent to charity wallet
-   0.25% token supply limit per transaction
-   0.5% token supply limit per wallet
-   10% Supply is burned at start.
-   
+
  */
 
 pragma solidity ^0.6.12;
@@ -762,14 +761,14 @@ contract ApeHaven is Context, IERC20, Ownable {
 	string private _symbol = "APES";
 	uint8 private _decimals = 18;
 	
-	uint256 public _taxFee = 4;
+	uint256 public _taxFee = 2;
 	uint256 private _previousTaxFee = _taxFee;
 	
 	uint256 public _devFee = 1; // 1% to charity wallet
 	uint256 private _previousDevFee = _devFee;
 	address public charityWallet = address(0x7c87DdAc05c5146876cc0f9e335ce125B15d6893); // Donated to the Center for Great Apes
 	
-	uint256 public _liquidityFee = 5;
+	uint256 public _liquidityFee = 7;
 	uint256 private _previousLiquidityFee = _liquidityFee;
 	
 	IUniswapV2Router02 public immutable uniswapV2Router;
@@ -1317,6 +1316,10 @@ contract ApeHaven is Context, IERC20, Ownable {
 	function AppendStr(string memory a, string memory b, string memory c, string memory d) internal pure returns (string memory) {
 		return string(abi.encodePacked(a, b, c, d));
 	}
+
+   // "Florida supports fintech sandbox." -Ron DeSantis
+
+   // "For the People." -John Morgan
    
-   // "As for me, I like the tokenomics." -WSB
+   // "As for me, I like the tokenomics." -DFV from WSB
 }
