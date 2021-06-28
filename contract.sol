@@ -762,8 +762,8 @@ contract ApeHaven is Context, IERC20, Ownable {
 	uint256 public _taxFee = 2;
 	uint256 private _previousTaxFee = _taxFee;
 	
-	uint256 public _devFee = 1; // 1% to charity wallet
-	uint256 private _previousDevFee = _devFee;
+	uint256 public _charityFee = 1; // 1% to charity wallet
+	uint256 private _previousDevFee = _charityFee;
 	address public charityWallet = address(0x7c87DdAc05c5146876cc0f9e335ce125B15d6893); // Donated to the Center for Great Apes
 	
 	uint256 public _liquidityFee = 7;
@@ -1073,7 +1073,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 	}
 	
 	function calculateDevFee(uint256 _amount) private view returns (uint256) {
-		return _amount.mul(_devFee).div(
+		return _amount.mul(_charityFee).div(
 			10 ** 2
 		);
 	}
@@ -1089,17 +1089,17 @@ contract ApeHaven is Context, IERC20, Ownable {
 		
 		_previousTaxFee = _taxFee;
 		_previousLiquidityFee = _liquidityFee;
-		_previousDevFee = _devFee;
+		_previousDevFee = _charityFee;
 		
 		_taxFee = 0;
 		_liquidityFee = 0;
-		_devFee = 0;
+		_charityFee = 0;
 	}
 	
 	function restoreAllFee() private {
 		_taxFee = _previousTaxFee;
 		_liquidityFee = _previousLiquidityFee;
-		_devFee = _previousDevFee;
+		_charityFee = _previousDevFee;
 	}
 	
 	function isExcludedFromFee(address account) public view returns (bool) {
