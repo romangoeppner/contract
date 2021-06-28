@@ -6,8 +6,6 @@
  *
  *
 
-   "$APES to the moon" -Elon Musk
-
    Contract features:
    7% fee auto added to the liquidity pool and locked forever
    2% fee auto distributed to all holders
@@ -1316,10 +1314,4 @@ contract ApeHaven is Context, IERC20, Ownable {
 	function AppendStr(string memory a, string memory b, string memory c, string memory d) internal pure returns (string memory) {
 		return string(abi.encodePacked(a, b, c, d));
 	}
-
-   // "Florida supports fintech sandbox." -Ron DeSantis
-
-   // "For the People." -John Morgan
-   
-   // "As for me, I like the tokenomics." -DFV from WSB
 }
