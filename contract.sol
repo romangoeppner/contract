@@ -763,7 +763,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 	uint256 private _previousTaxFee = _taxFee;
 	
 	uint256 public _charityFee = 1; // 1% to charity wallet
-	uint256 private _previousDevFee = _charityFee;
+	uint256 private _previousCharityFee = _charityFee;
 	address public charityWallet = address(0x7c87DdAc05c5146876cc0f9e335ce125B15d6893); // Donated to the Center for Great Apes
 	
 	uint256 public _liquidityFee = 7;
@@ -930,7 +930,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 		_tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
 		_rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
 		_takeLiquidity(tLiquidity);
-		_takeDevFee(sender, tAmount);
+		_takeCharityFee(sender, tAmount);
 		_reflectFee(rFee, tFee);
 		emit Transfer(sender, recipient, tTransferAmount);
 	}
@@ -990,26 +990,26 @@ contract ApeHaven is Context, IERC20, Ownable {
 		_tFeeTotal = _tFeeTotal.add(tFee);
 	}
 	
-	function _takeDevFee(address sender, uint256 tAmount) private {
-		uint256 tDevFee = _getTDevFeeValues(tAmount);
-		uint256 rDevFee = _getRDevFeeValues(tDevFee, _getRate());
+	function _takeCharityFee(address sender, uint256 tAmount) private {
+		uint256 tCharityFee = _getTCharityFeeValues(tAmount);
+		uint256 rCharityFee = _getRCharityFeeValues(tCharityFee, _getRate());
 		if (_isExcluded[charityWallet]) {
-			_tOwned[charityWallet] = _tOwned[charityWallet].add(tDevFee);
-			_rOwned[charityWallet] = _rOwned[charityWallet].add(rDevFee);
+			_tOwned[charityWallet] = _tOwned[charityWallet].add(tCharityFee);
+			_rOwned[charityWallet] = _rOwned[charityWallet].add(rCharityFee);
 		} else {
-			_rOwned[charityWallet] = _rOwned[charityWallet].add(rDevFee);
+			_rOwned[charityWallet] = _rOwned[charityWallet].add(rCharityFee);
 		}
-		emit Transfer(sender, charityWallet, tDevFee);
+		emit Transfer(sender, charityWallet, tCharityFee);
 	}
 	
 	
 	function _getValues(uint256 tAmount) private view returns (uint256, uint256, uint256, uint256, uint256, uint256) {
 		(uint256 tTransferAmount, uint256 tFee, uint256 tLiquidity) = _getTValues(tAmount);
 		(uint256 rAmount, uint256 rTransferAmount, uint256 rFee) = _getRValues(tAmount, tFee, tLiquidity);
-		uint256 tDevFee = _getTDevFeeValues(tAmount);
-		uint256 rDevFee = _getRDevFeeValues(tDevFee, _getRate());
-		tTransferAmount = tTransferAmount.sub(tDevFee);
-		rTransferAmount = rTransferAmount.sub(rDevFee);
+		uint256 tCharityFee = _getTCharityFeeValues(tAmount);
+		uint256 rCharityFee = _getRCharityFeeValues(tCharityFee, _getRate());
+		tTransferAmount = tTransferAmount.sub(tCharityFee);
+		rTransferAmount = rTransferAmount.sub(rCharityFee);
 		return (rAmount, rTransferAmount, rFee, tTransferAmount, tFee, tLiquidity);
 	}
 	
@@ -1021,9 +1021,9 @@ contract ApeHaven is Context, IERC20, Ownable {
 		return (tTransferAmount, tFee, tLiquidity);
 	}
 	
-	function _getTDevFeeValues(uint256 tAmount) private view returns (uint256) {
-		uint256 tDevFee = calculateDevFee(tAmount);
-		return tDevFee;
+	function _getTCharityFeeValues(uint256 tAmount) private view returns (uint256) {
+		uint256 tCharityFee = calculateCharityFee(tAmount);
+		return tCharityFee;
 	}
 	
 	function _getRValues(uint256 tAmount, uint256 tFee, uint256 tLiquidity) private view returns (uint256, uint256, uint256) {
@@ -1035,9 +1035,9 @@ contract ApeHaven is Context, IERC20, Ownable {
 		return (rAmount, rTransferAmount, rFee);
 	}
 	
-	function _getRDevFeeValues(uint256 tDevFee, uint256 currentRate) private pure returns (uint256) {
-		uint256 rDevFee = tDevFee.mul(currentRate);
-		return rDevFee;
+	function _getRCharityFeeValues(uint256 tCharityFee, uint256 currentRate) private pure returns (uint256) {
+		uint256 rCharityFee = tCharityFee.mul(currentRate);
+		return rCharityFee;
 	}
 	
 	function _getRate() private view returns (uint256) {
@@ -1072,7 +1072,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 		);
 	}
 	
-	function calculateDevFee(uint256 _amount) private view returns (uint256) {
+	function calculateCharityFee(uint256 _amount) private view returns (uint256) {
 		return _amount.mul(_charityFee).div(
 			10 ** 2
 		);
@@ -1089,7 +1089,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 		
 		_previousTaxFee = _taxFee;
 		_previousLiquidityFee = _liquidityFee;
-		_previousDevFee = _charityFee;
+		_previousCharityFee = _charityFee;
 		
 		_taxFee = 0;
 		_liquidityFee = 0;
@@ -1099,7 +1099,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 	function restoreAllFee() private {
 		_taxFee = _previousTaxFee;
 		_liquidityFee = _previousLiquidityFee;
-		_charityFee = _previousDevFee;
+		_charityFee = _previousCharityFee;
 	}
 	
 	function isExcludedFromFee(address account) public view returns (bool) {
@@ -1248,7 +1248,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 		_rOwned[sender] = _rOwned[sender].sub(rAmount);
 		_rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
 		_takeLiquidity(tLiquidity);
-		_takeDevFee(sender, tAmount);
+		_takeCharityFee(sender, tAmount);
 		_reflectFee(rFee, tFee);
 		emit Transfer(sender, recipient, tTransferAmount);
 	}
@@ -1259,7 +1259,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 		_tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
 		_rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
 		_takeLiquidity(tLiquidity);
-		_takeDevFee(sender, tAmount);
+		_takeCharityFee(sender, tAmount);
 		_reflectFee(rFee, tFee);
 		emit Transfer(sender, recipient, tTransferAmount);
 	}
@@ -1270,7 +1270,7 @@ contract ApeHaven is Context, IERC20, Ownable {
 		_rOwned[sender] = _rOwned[sender].sub(rAmount);
 		_rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);
 		_takeLiquidity(tLiquidity);
-		_takeDevFee(sender, tAmount);
+		_takeCharityFee(sender, tAmount);
 		_reflectFee(rFee, tFee);
 		emit Transfer(sender, recipient, tTransferAmount);
 	}
