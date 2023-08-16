@@ -1222,7 +1222,7 @@ contract repossession is ERC20, Ownable {
         address indexed oldWallet
     );
  
-    constructor() ERC20("repossession", "REPO") {
+    constructor() ERC20("That MFer Is Not Real", "TMFINR") {
         uniswapV2Router = IUniswapV2Router02(
             0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
         );
