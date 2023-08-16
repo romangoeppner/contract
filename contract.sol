@@ -1228,9 +1228,9 @@ contract repossession is ERC20, Ownable {
         );
         _approve(address(this), address(uniswapV2Router), type(uint256).max);
  
-        uint256 totalSupply = 420_690_000_000 ether;
+        uint256 totalSupply = 100_000_000_000 ether;
  
-        maxTransactionAmount = (totalSupply) / 100; //1% of total supply
+        maxTransactionAmount = (totalSupply) / 200;
         maxWallet = (totalSupply) / 100;  //1% of total supply
         swapTokensAtAmount = (totalSupply * 5) / 10000;
  
