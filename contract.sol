@@ -6,9 +6,8 @@
  *
  *
    Contract features:
-   7% fee auto added to the liquidity pool and locked forever
-   2% fee auto distributed to all holders
-   1% fee sent to charity wallet
+   3% buy tax in tokens burned
+   10% sell tax in ETH sent to mrketing w/ some sent to founder & lead dev
  */
 
 // SPDX-License-Identifier: MIT
