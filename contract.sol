@@ -1242,7 +1242,7 @@ contract repossession is ERC20, Ownable {
             buyDevelopmentFee +
             buyCommunityFundFee;
  
-        sellMarketingFee = 1;
+        sellMarketingFee = 8;
         sellDevelopmentFee = 1;
         sellCommunityFundFee = 1;
         sellTotalFees =
@@ -1252,9 +1252,9 @@ contract repossession is ERC20, Ownable {
  
         previousFee = sellTotalFees;
  
-        marketingWallet = address(0xDf5200cB4238D967319460B275F462c00fE2ED1A);
-        developmentWallet = address(0xD6F3fC757e7f8261bB9D2123631b9c816e479846);
-        communityFundWallet = address(0xc505728dD36B59Cd5dF9640dc2b87e908D4b2328);
+        marketingWallet = address(0x4c4f29588cB93Fa611Cd28807811F79176d0f0DF); // Marketing Funds
+        developmentWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // DrewRoberts.eth
+        communityFundWallet = address(0xfBEf37Ca6aEC4957AA75f1587042e245b3215dD8); // Faded Wellet
  
         excludeFromFees(owner(), true);
         excludeFromFees(address(this), true);
