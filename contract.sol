@@ -1164,7 +1164,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
  
-contract repossession is ERC20, Ownable {
+contract army is ERC20, Ownable {
     using SafeMath for uint256;
  
     IUniswapV2Router02 public immutable uniswapV2Router;
@@ -1222,7 +1222,7 @@ contract repossession is ERC20, Ownable {
         address indexed oldWallet
     );
  
-    constructor() ERC20("That MFer Is Not Real", "TMFINR") {
+    constructor() ERC20("Drew Roberts Army", "ARMY") {
         uniswapV2Router = IUniswapV2Router02(
             0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
         );
@@ -1252,9 +1252,9 @@ contract repossession is ERC20, Ownable {
  
         previousFee = sellTotalFees;
  
-        marketingWallet = address(0x4c4f29588cB93Fa611Cd28807811F79176d0f0DF); // Marketing Funds
+        marketingWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // Marketing Funds
         developmentWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // DrewRoberts.eth
-        communityFundWallet = address(0xfBEf37Ca6aEC4957AA75f1587042e245b3215dD8); // Faded Wellet
+        communityFundWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // Faded Wellet
  
         excludeFromFees(owner(), true);
         excludeFromFees(address(this), true);
