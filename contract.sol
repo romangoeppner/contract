@@ -1230,8 +1230,8 @@ contract army is ERC20, Ownable {
  
         uint256 totalSupply = 100_000_000_000 ether;
  
-        maxTransactionAmount = (totalSupply) / 200;
-        maxWallet = (totalSupply) / 100;  //1% of total supply
+        maxTransactionAmount = (totalSupply) / 200; // 500,000,000 tokens
+        maxWallet = (totalSupply) / 100;  //1% of total supply (1,000,000,000 tokens)
         swapTokensAtAmount = (totalSupply * 5) / 10000;
  
         buyMarketingFee = 1;
@@ -1252,9 +1252,9 @@ contract army is ERC20, Ownable {
  
         previousFee = sellTotalFees;
  
-        marketingWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // Marketing Funds
+        marketingWallet = address(0xCcff2853D67C92b6511217b9224558046818D677); // Marketing Funds
         developmentWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // DrewRoberts.eth
-        communityFundWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // Faded Wellet
+        communityFundWallet = address(0xD65746AdED5Ec72899c67752f079Daf020D9c20C); // Community Funds
  
         excludeFromFees(owner(), true);
         excludeFromFees(address(this), true);
