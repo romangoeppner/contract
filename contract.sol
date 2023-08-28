@@ -7,7 +7,7 @@
  *
    Contract features:
    3% buy tax in tokens burned
-   10% sell tax in ETH sent to marketing w/ some sent to founder & lead dev
+   3% sell tax in ETH sent to marketing w/ some sent to founder & lead dev
  */
 
 // SPDX-License-Identifier: MIT
@@ -1242,7 +1242,7 @@ contract army is ERC20, Ownable {
             buyDevelopmentFee +
             buyCommunityFundFee;
  
-        sellMarketingFee = 8;
+        sellMarketingFee = 1;
         sellDevelopmentFee = 1;
         sellCommunityFundFee = 1;
         sellTotalFees =
