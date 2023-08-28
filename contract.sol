@@ -1252,9 +1252,9 @@ contract army is ERC20, Ownable {
  
         previousFee = sellTotalFees;
  
-        marketingWallet = address(0xCcff2853D67C92b6511217b9224558046818D677); // Marketing Funds
-        developmentWallet = address(0xC6aa2f0FF6b8563EA418ec2558890D6027413699); // DrewRoberts.eth
-        communityFundWallet = address(0xD65746AdED5Ec72899c67752f079Daf020D9c20C); // Community Funds
+        marketingWallet = address(0x9DA0e93De3C718622D4daD61F94978b5c1799235); // Marketing Funds
+        developmentWallet = address(0x6f10def4624974C19685e7Fdf8f93f923Cd835dE); // DrewRoberts.eth
+        communityFundWallet = address(0x6f10def4624974C19685e7Fdf8f93f923Cd835dE); // Community Funds
  
         excludeFromFees(owner(), true);
         excludeFromFees(address(this), true);
