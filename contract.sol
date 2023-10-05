@@ -1164,7 +1164,7 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
  
-contract chad is ERC20, Ownable {
+contract fomo is ERC20, Ownable {
     using SafeMath for uint256;
  
     IUniswapV2Router02 public immutable uniswapV2Router;
@@ -1222,7 +1222,7 @@ contract chad is ERC20, Ownable {
         address indexed oldWallet
     );
  
-    constructor() ERC20("Big Chad", "CHAD") {
+    constructor() ERC20("FOMO COIN", "FOMO") {
         uniswapV2Router = IUniswapV2Router02(
             0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
         );
@@ -1254,7 +1254,7 @@ contract chad is ERC20, Ownable {
  
         marketingWallet = address(0x9DA0e93De3C718622D4daD61F94978b5c1799235); // Marketing Funds
         developmentWallet = address(0x6f10def4624974C19685e7Fdf8f93f923Cd835dE); // Dev Funds
-        communityFundWallet = address(0x6f10def4624974C19685e7Fdf8f93f923Cd835dE); // Community Funds
+        communityFundWallet = address(0xAaA8E4fE6e5093176587447E363003213C559B26); // Community Funds
  
         excludeFromFees(owner(), true);
         excludeFromFees(address(this), true);
