@@ -7,7 +7,7 @@
  *
    Contract features:
    3% buy tax in tokens burned
-   3% sell tax in ETH sent to marketing w/ some sent to founder & lead dev
+   8% sell tax in ETH sent to marketing w/ some sent to founder & lead dev
  */
 
 // SPDX-License-Identifier: MIT
