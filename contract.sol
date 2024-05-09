@@ -6,8 +6,8 @@
  *
  *
    Contract features:
-   5% buy tax in tokens burned
-   5% sell tax in ETH sent to marketing w/ some sent to founder & lead dev
+   8% buy tax in tokens burned
+   6% sell tax in ETH sent to marketing w/ some sent to founder & lead dev
  */
 
 // SPDX-License-Identifier: MIT
@@ -1222,7 +1222,7 @@ contract fomo is ERC20, Ownable {
         address indexed oldWallet
     );
  
-    constructor() ERC20("FOMO COIN", "FOMO") {
+    constructor() ERC20("POTATO COIN", "POTATO") {
         uniswapV2Router = IUniswapV2Router02(
             0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
         );
